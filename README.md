@@ -1,5 +1,5 @@
 # Point of Sale Terminal App
-[Project Inspo](https://www.sourcecodester.com/sites/default/files/images/profoptimum/pos.jpg)
+![Project Inspo](https://www.sourcecodester.com/sites/default/files/images/profoptimum/pos.jpg)
 
 ## Available Scripts
 
