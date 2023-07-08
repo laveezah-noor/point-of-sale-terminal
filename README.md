@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Point of Sale Terminal App
+![Project Inspo](https://www.sourcecodester.com/sites/default/files/images/profoptimum/pos.jpg)
 
 ## Resources
 [Point of Sale](https://www.sketch.com/s/5eb0b528-d446-4245-9f27-764e12019480/p/4B779A4F-AC38-4CD3-950F-8C6C80DB60F6/canvas#Comment)
