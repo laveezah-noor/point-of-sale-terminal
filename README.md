@@ -1,8 +1,13 @@
 # Point of Sale Terminal App
+![Project Inspo](/public/dashboard.png)
+
+![Project Inspo](/public/inventory.png)
+
 ![Project Inspo](https://www.sourcecodester.com/sites/default/files/images/profoptimum/pos.jpg)
 
 ## Resources
 [Point of Sale](https://www.sketch.com/s/5eb0b528-d446-4245-9f27-764e12019480/p/4B779A4F-AC38-4CD3-950F-8C6C80DB60F6/canvas#Comment)
+
 [Fast Food Point of Sale](https://www.figma.com/file/Bq3ps1MbuwybaXd3coWB2A/Fast-Food-Point-Of-Sales-UI-Kit-%7C-iPad-and-iPhone-(Community)?type=design&node-id=0-1&mode=design&t=wNBk03417VgadD8j-0)
 
 ## Available Scripts
