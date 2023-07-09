@@ -23,13 +23,14 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className='flex '>
-      <Sidebar/>
-
+    <div className=''>
+      <Sidebar className="">
       {/* Main Page */}
-      <div className='container mx-auto px-6 bg-gray-200'>
+      <div className='px-4 bg-gray-200'>
         <RouterProvider router={router} />
       </div>
+      {/* <div className='bg-white grid-cols-3 col-span-8 h-screen w-full'></div> */}
+      </Sidebar>
     </div>
     );
 }

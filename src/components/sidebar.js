@@ -121,14 +121,12 @@ const components = [
     }
 ]
 
-export default function Sidebar() {
+export default function Sidebar({children}) {
   return (
-    <div class="">
-
-
+    <div className='flex'>
         <aside
         //  rounded bg-gray-50 dark:bg-gray-800
-        class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700"
+        class="flex flex-col justify-between fixed top-0 w-1/6 h-screen p-4 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700"
          aria-label="Sidebar">       
                 <a className='space-y-3' href="#">
                     <img class="w-auto h-7" src="https://merakiui.com/images/logo.svg" alt=""/>
@@ -141,15 +139,22 @@ export default function Sidebar() {
                     {components.map((item) => {
                     return <li>
                     <a href={item.link}
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+                        class="flex items-center p-1 text-base font-normal text-gray-900 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
                         {item.icon}
                         <span class="flex-1 ml-3 whitespace-nowrap">{item.title}</span>
                         {item.extra}
                     </a>
                 </li>    
                     })}
+                </ul>
+            </div>
+        </aside>
+        <main className='ml-52 w-5/6'>{children}</main>
+    </div>
+  )
+}
 
-                    {/* <li>
+{/* <li>
                         <a href="#"
                             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                             <svg class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -236,9 +241,3 @@ export default function Sidebar() {
                             <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
                         </a>
                     </li> */}
-                </ul>
-            </div>
-        </aside>
-    </div>
-  )
-}
