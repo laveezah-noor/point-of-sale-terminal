@@ -8,6 +8,7 @@ import InventoryPage from './routes/inventory-page';
 import NewEntryPage from './routes/newEntry-page';
 import ErrorPage from './routes/error-page';
 import Sidebar from './components/sidebar';
+import Navbar from './components/navbar';
 import { ProductsPage } from './routes/products-page';
 import  {newProductPage}  from './routes/newProduct-page';
 
@@ -44,7 +45,8 @@ function App() {
     <div className=''>
       <Sidebar className="">
       {/* Main Page */}
-      <div className='px-4 bg-gray-200'>
+      <Navbar/>
+      <div className='bg-gray-200'>
         <RouterProvider router={router} />
       </div>
       {/* <div className='bg-white grid-cols-3 col-span-8 h-screen w-full'></div> */}
