@@ -10,7 +10,8 @@ export default function DashboardPage() {
       <h2>Welcome Back, Clint</h2>
     </div>
     <div>
-      
+      <h1>Hi Clint</h1>
+      <button class="rounded-full ...">Save Changes</button>
     </div>
     <TopCards/>
     <div 
