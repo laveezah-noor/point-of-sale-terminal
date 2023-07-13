@@ -5,8 +5,14 @@ export const ProductsPage = () => {
         window.location.href = '/newProduct';
       };
   return (
-    <div>
-    <nav class="sm:h-20 flex items-center sm:flex sm:justfy-between sm:flex-row flex-col bg-white">
+    
+
+<div class="bg-gray-100">
+
+    {/* <!-- *********************************************NAVBAR*********************************************** --> */}
+
+
+    <nav class="sm:h-20 flex sm:flex items-center sm:justify-between sm:flex-row flex-col border-b-2 border-gray-400 bg-white">
         <div class="flex items-center ml-4 bg-gray-100 rounded-lg w-80 h-10 p-5 sm:mt-0 mt-3">
             <i class="fa-solid fa-magnifying-glass opacity-50 text-lg"></i>
             <input class="bg-gray-100 outline-0 text-lg pl-2.5" type="text" placeholder="Search..."/>
@@ -19,11 +25,13 @@ export const ProductsPage = () => {
             <p class="text-sm"> <span class="font-bold">Saad Sohail</span> <br/> Web Developer</p>
         </ul>
     </nav>
-    <hr class="border-gray-400"/>
+    {/* <!-- <hr class="border-gray-400"> --> */}
 
 
 
 
+
+    {/* <!-- *******************************************PRODUCTS*********************************************** --> */}
 
     <div class="flex m-24 md:flex-row flex-col items-center justify-between">
 
@@ -43,7 +51,7 @@ export const ProductsPage = () => {
                 <button>Filter</button>
             </div>
             <div>
-                <button onClick={changePage} style={{backgroundColor: "#775DA6;"}} class="h-10 px-4 ml-4 rounded-lg text-white">Create
+                <button style={{backgroundColor: "#775DA6"}} class="h-10 px-4 ml-4 rounded-lg text-white">Create
                     New</button>
             </div>
         </div>
@@ -67,7 +75,7 @@ export const ProductsPage = () => {
                 import products using a spreadsheet. You can also sync products from your eCommerce store.</p>
         </div>
         <div class="px-12">
-            <button style={{color: "#775DA6", border: "2px #775DA6 solid"}} class="ml-4 w-36 py-3 rounded-lg bg-white">
+            <button style = {{color: "#775DA6", border: "2px #775DA6 solid"}} class="ml-4 w-36 py-3 rounded-lg bg-white">
                 Add a product</button>
         </div>
     </div>
@@ -84,8 +92,7 @@ export const ProductsPage = () => {
         <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
             <thead class="bg-gray-50">
                 <tr>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900 flex items-center mt-3">
-                        <input
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900 flex items-center mt-3"><input
                             type="checkbox" class="w-5 h-5 mr-2 outline outline-1 outline-gray-400"/> Name</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">Supplier</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">Product Type</th>
@@ -105,7 +112,6 @@ export const ProductsPage = () => {
                                 alt="" />
                             <span
                                 class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-
                         </div>
                         <div class="text-sm">
                             <div class="font-medium text-gray-700">Steven Jobs</div>
