@@ -1,4 +1,8 @@
 # Point of Sale Terminal App
+![DashboardPage](/public/dashboardPage.png)
+
+![ProductPage](/public/productPage.png)
+
 ![Project Inspo](/public/dashboard.png)
 
 ![Project Inspo](/public/inventory.png)
