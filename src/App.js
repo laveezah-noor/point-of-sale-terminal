@@ -11,6 +11,7 @@ import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 import { ProductsPage } from './routes/products-page';
 import  {newProductPage}  from './routes/newProduct-page';
+import { OrderPage } from './routes/order-page';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
   {
     path: "/newProduct",
     element: <newProductPage/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/newOrder",
+    element: <OrderPage/>,
     errorElement: <ErrorPage/>
   },
 ]);
