@@ -1,3 +1,12 @@
+DROP SCHEMA IF EXISTS `pos` ;
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `pos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+SHOW WARNINGS;
+USE `pos` ;
+
 #
 # TABLE STRUCTURE FOR: accounts
 #
@@ -25,7 +34,22 @@ CREATE TABLE `accounts` (
   CONSTRAINT `accounts_equity_column_id_fk` FOREIGN KEY (`equity_column_id`) REFERENCES `equity_columns` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-INSERT INTO `accounts` (`id`, `balance_and_income_line_id`, `equity_column_id`, `account_name`, `account_type`, `official_code`, `is_archived`, `inserted_at`, `inserted_by`, `updated_at`, `updated_by`) VALUES ('0', 39, 1, '18367', 8, 'zxjp', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', '');
+INSERT INTO `accounts` (
+`id`, 
+`balance_and_income_line_id`, 
+`equity_column_id`, 
+`account_name`, 
+`account_type`, `official_code`, `is_archived`, `inserted_at`, `inserted_by`, `updated_at`, `updated_by`) 
+VALUES 
+('0', 39, 1, '18367', 8, 'zxjp', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('1', 39, null, 'Fixed Assets', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('122', 39, null, 'Equipment', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('2', 39, null, 'Current Assets', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('201', 39, null, 'Supplies', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('241', 39, null, 'Account Receivable', 2, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('271', 39, null, 'Cash in Bank', 2, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', '')
+,
+('1', 39, null, 'Fixed Assets', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', '');
 
 
 #
@@ -572,7 +596,6 @@ INSERT INTO `currency_codes` (`id`, `is_archived`, `inserted_at`, `inserted_by`,
 #
 # TABLE STRUCTURE FOR: documents
 #
-
 DROP TABLE IF EXISTS `documents`;
 
 CREATE TABLE `documents` (
@@ -938,7 +961,7 @@ INSERT INTO `equity_line_assignments` (`id`, `equity_line_id`, `document_type`, 
 #
 # TABLE STRUCTURE FOR: equity_lines
 #
-
+select * from equity_lines;
 DROP TABLE IF EXISTS `equity_lines`;
 
 CREATE TABLE `equity_lines` (

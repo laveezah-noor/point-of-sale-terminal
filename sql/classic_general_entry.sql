@@ -1,4 +1,4 @@
-SELECT * FROM transactions;
+SELECT * FROM accounts;
 
 SELECT t.transaction_date AS Date, t.description AS DescriptionOrAccountTitle, 
 null as AmountDebit, null AS AmountCredit, t.id AS Reference, null AS IsLine
