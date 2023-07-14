@@ -35,21 +35,28 @@ CREATE TABLE `accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `accounts` (
-`id`, 
-`balance_and_income_line_id`, 
-`equity_column_id`, 
-`account_name`, 
+`id`, `balance_and_income_line_id`, `equity_column_id`, `account_name`, 
 `account_type`, `official_code`, `is_archived`, `inserted_at`, `inserted_by`, `updated_at`, `updated_by`) 
 VALUES 
-('0', 39, 1, '18367', 8, 'zxjp', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
-('1', 39, null, 'Fixed Assets', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
-('122', 39, null, 'Equipment', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
-('2', 39, null, 'Current Assets', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
-('201', 39, null, 'Supplies', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
-('241', 39, null, 'Account Receivable', 2, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
-('271', 39, null, 'Cash in Bank', 2, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', '')
-,
-('1', 39, null, 'Fixed Assets', 1, 'asset', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', '');
+-- ('0', 39, 1, '18367', 8, 'zxjp', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('1', 39, null, 'Fixed Assets', 1, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('122', 39, null, 'Equipment', 1, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('2', 39, null, 'Current Assets', 2, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('201', 39, null, 'Supplies', 2, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('241', 39, null, 'Account Receivable', 2, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('271', 39, null, 'Cash in Bank', 2, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('3', 39, null, 'Equity', 3, 'equity', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('301', 39, null, 'Equity capital', 3, 'equity', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('4', 39, null, 'Liabilties', 4, 'liabilities', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('443', 39, null, 'Account Payable', 4, 'liabilities', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('4492', 39, null, 'VAT Payable', 4, 'liabilities', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('5', 39, null, 'Revenues', 5, 'revenues', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('500', 39, null, 'Sales Revenues', 5, 'revenues', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('6', 39, null, 'Expenses', 6, 'expenses', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('6304', 39, null, 'Salary Expenses', 6, 'expenses', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', '');
+
+
+
 
 
 #
@@ -1384,6 +1391,7 @@ INSERT INTO `ledger_entries` (`id`, `transaction_id`, `account_id`, `entry_type`
 INSERT INTO `ledger_entries` (`id`, `transaction_id`, `account_id`, `entry_type`, `amount`, `person_id`, `cost_centre_id`) VALUES (2500100, 1000100, '0', 'D', '3514400.00', NULL, NULL);
 
 
+
 #
 # TABLE STRUCTURE FOR: transactions
 #
@@ -1500,6 +1508,5 @@ INSERT INTO `transactions` (`id`, `document_id`, `transaction_date`, `descriptio
 INSERT INTO `transactions` (`id`, `document_id`, `transaction_date`, `description`) VALUES (1000097, 1000097, '1984-08-21', 'Aut voluptas ut doloribus modi. Architecto nam vero quisquam sed iure molestiae. Maxime perspiciatis aliquam impedit ut explicabo ea. Similique ratione vel eveniet quod et quo quia.');
 INSERT INTO `transactions` (`id`, `document_id`, `transaction_date`, `description`) VALUES (1000098, 1000098, '2017-01-20', 'Eum quia accusamus vitae eum est quo. Esse dolore nihil nesciunt voluptatem. Quam ratione molestiae sit laudantium sit fugiat.');
 INSERT INTO `transactions` (`id`, `document_id`, `transaction_date`, `description`) VALUES (1000099, 1000099, '1979-02-21', 'Rerum quibusdam libero cumque distinctio. Veritatis eligendi iusto qui similique accusantium non delectus. Totam voluptates qui et odit quos et. Omnis dolorum aut dolores et accusantium.');
-INSERT INTO `transactions` (`id`, `document_id`, `transaction_date`, `description`) VALUES (1000100, 1000100, '1983-05-03', 'Vero quis quasi dolore vero magni quo quaerat. Quae dicta quia molestiae voluptatem amet officiis omnis. Qui excepturi sit veniam pariatur repellendus.');
 
 

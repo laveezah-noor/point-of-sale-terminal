@@ -15,14 +15,14 @@ DROP SCHEMA IF EXISTS `mydb` ;
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 SHOW WARNINGS;
 -- -----------------------------------------------------
--- Schema pos
+-- Schema mydb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `pos` ;
+DROP SCHEMA IF EXISTS `mydb` ;
 
 -- -----------------------------------------------------
--- Schema pos
+-- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `pos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 SHOW WARNINGS;
 USE `mydb` ;
 
@@ -47,9 +47,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`cash_flow_lines` (
   `inserted_by` VARCHAR(225) NULL,
   `updated_at` INT NULL,
   `updated_by` VARCHAR(225) NULL,
-  `cash_flow_linescol` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `cas` () VISIBLE)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -94,15 +92,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`cash_flow_adjustments` (
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
-USE `pos` ;
+USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `pos`.`balance_and_income_lines`
+-- Table `mydb`.`balance_and_income_lines`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`balance_and_income_lines` ;
+DROP TABLE IF EXISTS `mydb`.`balance_and_income_lines` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`balance_and_income_lines` (
+CREATE TABLE IF NOT EXISTS `mydb`.`balance_and_income_lines` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `line_type` ENUM('base_header', 'balance_header', 'income_header', 'balance_line', 'income_line') CHARACTER SET 'ascii' NOT NULL,
   `visible_index` INT UNSIGNED NOT NULL,
@@ -129,12 +127,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`equity_columns`
+-- Table `mydb`.`equity_columns`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`equity_columns` ;
+DROP TABLE IF EXISTS `mydb`.`equity_columns` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`equity_columns` (
+CREATE TABLE IF NOT EXISTS `mydb`.`equity_columns` (
   `id` INT NOT NULL,
   `column_text` VARCHAR(225) NULL DEFAULT NULL,
   `visible_index` INT NULL DEFAULT NULL,
@@ -150,12 +148,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`accounts`
+-- Table `mydb`.`accounts`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`accounts` ;
+DROP TABLE IF EXISTS `mydb`.`accounts` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`accounts` (
+CREATE TABLE IF NOT EXISTS `mydb`.`accounts` (
   `id` BIGINT UNSIGNED NOT NULL,
   `balance_and_income_line_id` INT UNSIGNED NULL DEFAULT NULL,
   `equity_column_id` INT NULL DEFAULT NULL,
@@ -174,12 +172,12 @@ CREATE TABLE IF NOT EXISTS `pos`.`accounts` (
   INDEX `accounts_equity_column_id_fk` (`equity_column_id` ASC) VISIBLE,
   CONSTRAINT `accounts_balance_and_income_line_id_fk`
     FOREIGN KEY (`balance_and_income_line_id`)
-    REFERENCES `pos`.`balance_and_income_lines` (`id`)
+    REFERENCES `mydb`.`balance_and_income_lines` (`id`)
     ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT `accounts_equity_column_id_fk`
     FOREIGN KEY (`equity_column_id`)
-    REFERENCES `pos`.`equity_columns` (`id`)
+    REFERENCES `mydb`.`equity_columns` (`id`)
     ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -189,12 +187,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`documents`
+-- Table `mydb`.`documents`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`documents` ;
+DROP TABLE IF EXISTS `mydb`.`documents` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`documents` (
+CREATE TABLE IF NOT EXISTS `mydb`.`documents` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `document_date` DATE NOT NULL,
   `document_no` VARCHAR(100) NOT NULL,
@@ -213,12 +211,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`transactions`
+-- Table `mydb`.`transactions`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`transactions` ;
+DROP TABLE IF EXISTS `mydb`.`transactions` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`transactions` (
+CREATE TABLE IF NOT EXISTS `mydb`.`transactions` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(255) NOT NULL,
   `transaction_date` DATE NOT NULL,
@@ -228,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `pos`.`transactions` (
   UNIQUE INDEX `document_id` (`document_id` ASC) VISIBLE,
   CONSTRAINT `fk_document_id`
     FOREIGN KEY (`document_id`)
-    REFERENCES `pos`.`documents` (`id`)
+    REFERENCES `mydb`.`documents` (`id`)
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -237,12 +235,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`cash_flow_adjustments`
+-- Table `mydb`.`cash_flow_adjustments`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`cash_flow_adjustments` ;
+DROP TABLE IF EXISTS `mydb`.`cash_flow_adjustments` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`cash_flow_adjustments` (
+CREATE TABLE IF NOT EXISTS `mydb`.`cash_flow_adjustments` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `transaction_id` INT UNSIGNED NOT NULL,
   `account_id` BIGINT UNSIGNED NOT NULL,
@@ -253,11 +251,11 @@ CREATE TABLE IF NOT EXISTS `pos`.`cash_flow_adjustments` (
   INDEX `account_fk_idx` (`account_id` ASC) VISIBLE,
   CONSTRAINT `cash_flow_adjustments_account_fk`
     FOREIGN KEY (`account_id`)
-    REFERENCES `pos`.`accounts` (`id`)
+    REFERENCES `mydb`.`accounts` (`id`)
     ON DELETE CASCADE,
   CONSTRAINT `cash_flow_adjustments_transaction_fk`
     FOREIGN KEY (`transaction_id`)
-    REFERENCES `pos`.`transactions` (`id`)
+    REFERENCES `mydb`.`transactions` (`id`)
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -266,12 +264,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`cash_flow_lines`
+-- Table `mydb`.`cash_flow_lines`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`cash_flow_lines` ;
+DROP TABLE IF EXISTS `mydb`.`cash_flow_lines` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`cash_flow_lines` (
+CREATE TABLE IF NOT EXISTS `mydb`.`cash_flow_lines` (
   `id` INT NOT NULL,
   `line_type` ENUM('header', 'line') NULL DEFAULT NULL,
   `is_net_income` TINYINT NULL DEFAULT NULL,
@@ -294,12 +292,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`cash_flow_line_assignments`
+-- Table `mydb`.`cash_flow_line_assignments`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`cash_flow_line_assignments` ;
+DROP TABLE IF EXISTS `mydb`.`cash_flow_line_assignments` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`cash_flow_line_assignments` (
+CREATE TABLE IF NOT EXISTS `mydb`.`cash_flow_line_assignments` (
   `id` INT NOT NULL,
   `account_id` BIGINT UNSIGNED NULL DEFAULT NULL,
   `cash_flow_line_id` INT NULL DEFAULT NULL,
@@ -308,10 +306,10 @@ CREATE TABLE IF NOT EXISTS `pos`.`cash_flow_line_assignments` (
   INDEX `account_fk_idx` (`account_id` ASC) VISIBLE,
   CONSTRAINT `account_fk`
     FOREIGN KEY (`account_id`)
-    REFERENCES `pos`.`accounts` (`id`),
+    REFERENCES `mydb`.`accounts` (`id`),
   CONSTRAINT `cash_flow_fk`
     FOREIGN KEY (`cash_flow_line_id`)
-    REFERENCES `pos`.`cash_flow_lines` (`id`))
+    REFERENCES `mydb`.`cash_flow_lines` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -319,12 +317,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `pos`.`ledger_entries`
+-- Table `mydb`.`ledger_entries`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pos`.`ledger_entries` ;
+DROP TABLE IF EXISTS `mydb`.`ledger_entries` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `pos`.`ledger_entries` (
+CREATE TABLE IF NOT EXISTS `mydb`.`ledger_entries` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `transaction_id` INT UNSIGNED NOT NULL,
   `account_id` BIGINT UNSIGNED NOT NULL,
@@ -336,11 +334,11 @@ CREATE TABLE IF NOT EXISTS `pos`.`ledger_entries` (
   INDEX `fk_ledger_entries_2` (`transaction_id` ASC) VISIBLE,
   CONSTRAINT `fk_ledger_entries_1`
     FOREIGN KEY (`account_id`)
-    REFERENCES `pos`.`accounts` (`id`)
+    REFERENCES `mydb`.`accounts` (`id`)
     ON UPDATE CASCADE,
   CONSTRAINT `fk_ledger_entries_2`
     FOREIGN KEY (`transaction_id`)
-    REFERENCES `pos`.`transactions` (`id`)
+    REFERENCES `mydb`.`transactions` (`id`)
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
