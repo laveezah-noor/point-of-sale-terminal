@@ -2,6 +2,7 @@ import DashboardPage from './routes/dashboard-page';
 import InventoryPage from './routes/inventory-page';
 import NewEntryPage from './routes/newEntry-page';
 import ErrorPage from './routes/error-page';
+import NewPage from './routes/newProductPage';
 import { ProductsPage } from './routes/products-page';
 import  {newProductPage}  from './routes/newProduct-page';
 import { OrderPage } from './routes/order-page';
@@ -124,7 +125,7 @@ const routes = [
     },
       {
         path: "/newProduct",
-        element: <newProductPage/>,
+        element: <NewPage/>,
         errorElement: <ErrorPage/>
       },
       {
