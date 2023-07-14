@@ -3,6 +3,9 @@ import { TopCards } from '../components/topCards'
 import { LineChart, AreaChart } from '../components/AreaChart'
 
 export default function DashboardPage() {
+  const changePage = () => {
+    window.location.href = '/newEntry';
+  };
   return (
     <>
     <div className='flex justify-between px-4 pt-4'>
@@ -10,8 +13,11 @@ export default function DashboardPage() {
       <h2>Welcome Back, Clint</h2>
     </div>
     <div>
-      <h1>Hi Clint</h1>
-      <button class="rounded-full ...">Save Changes</button>
+      {/* <h1>Hi Clint</h1> */}
+      <button 
+        style={{ backgroundColor: "#775DA6" }} 
+        onClick={changePage}
+        class="h-12 w-40 ml-4 rounded-lg text-white">New Entry</button>
     </div>
     <TopCards/>
     <div 
