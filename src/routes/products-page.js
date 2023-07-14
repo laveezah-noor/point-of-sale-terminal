@@ -21,7 +21,7 @@ export const ProductsPage = () => {
 
             {/* <!-- *******************************************PRODUCTS*********************************************** --> */}
 
-            <div class="flex m-24 md:flex-row flex-col items-center justify-between">
+            <div class="flex p-24 md:flex-row flex-col items-center justify-between">
 
                 <div class="">
                     <p class="text-6xl font-semibold">Products</p>
