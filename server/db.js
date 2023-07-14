@@ -7,22 +7,22 @@ const connection = sql.createConnection({
   password: "noor.20103048",
   // user: process.env.DB_USER,
   // password: process.env.DB_PASS,
-  database: 'mydb',
+  database: 'pos',
   multipleStatements: true});
 
   
 // console.log(process.env.DB_USER)
-  exports.connect = (done) => {
-      connection.connect((err) =>{
-          if(err){
-              console.log('db connection error');
-          }
-          else{
-              done()
-          }
-     })
-  }
+  // exports.connect = (done) => {
+  //     connection.connect((err) =>{
+  //         if(err){
+  //             console.log('db connection error');
+  //         }
+  //         else{
+  //             done()
+  //         }
+  //    })
+  // }
   
-  exports.connection = connection;
+  // exports.connection = connection;
 
-// module.exports = connection;
+module.exports = connection;
