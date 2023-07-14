@@ -1,6 +1,15 @@
 import React from 'react'
 
-export const newProductPage = () => {
+export const newProductsPage = () => {
+    const changePage = () => {
+        window.location.href = '/newProduct';
+    };
+    return (
+        <div>Hello</div>
+    )}
+
+
+export function newProductPage () {
   return (
     <div class="bg-gray-100">
 
@@ -55,7 +64,7 @@ export const newProductPage = () => {
                     <option value="audi">Audi</option>
                 </select>
                 <div class="ml-12">
-                    <button style={{color: "#775DA6", border: "2px #775DA6 solid;"}} class="px-4 py-2 rounded-lg bg-white">
+                    <button style={{color: "#775DA6", border: "2px #775DA6 solid"}} class="px-4 py-2 rounded-lg bg-white">
                         New</button>
                 </div>
             </div>
@@ -87,7 +96,7 @@ export const newProductPage = () => {
                     <option value="audi">Audi</option>
                 </select>
                 <div class="ml-12">
-                    <button style="color: #775DA6; border: 2px #775DA6 solid;" class="px-4 py-2 rounded-lg bg-white">
+                    <button style={{color: "#775DA6", border: "2px #775DA6 solid"}} class="px-4 py-2 rounded-lg bg-white">
                         New</button>
                 </div>
             </div>

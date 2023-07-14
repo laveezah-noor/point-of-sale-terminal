@@ -9,6 +9,7 @@ import NewEntryPage from './routes/newEntry-page';
 import ErrorPage from './routes/error-page';
 import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
+import {ReportPage} from './routes/report-page';
 import { ProductsPage } from './routes/products-page';
 import  {newProductPage}  from './routes/newProduct-page';
 import { OrderPage } from './routes/order-page';
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
   {
     path: "/newOrder",
     element: <OrderPage/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/reports",
+    element: <ReportPage/>,
     errorElement: <ErrorPage/>
   },
 ]);
