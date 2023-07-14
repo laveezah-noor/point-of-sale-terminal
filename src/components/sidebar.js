@@ -137,7 +137,7 @@ export default function Sidebar({children}) {
             class="flex flex-col justify-between flex-1 mt-6 ">
                 <ul class="space-y-2">
                     
-                    {routes.map((item) => {
+                    {routes.filter(item => item.title).map((item) => {
                     return <li>
                     <a href={item.path}
                         class="flex items-center p-1 text-base font-normal text-gray-900 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
