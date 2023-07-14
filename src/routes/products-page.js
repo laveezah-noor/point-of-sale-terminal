@@ -39,8 +39,10 @@ export const ProductsPage = () => {
                         <button>Filter</button>
                     </div>
                     <div>
-                        <button style={{ backgroundColor: "#775DA6" }} class="h-10 px-4 ml-4 rounded-lg text-white">Create
-                            New</button>
+                        <button 
+                        style={{ backgroundColor: "#775DA6" }} 
+                        onClick={changePage}
+                        class="h-10 px-4 ml-4 rounded-lg text-white">Create New</button>
                     </div>
                 </div>
 
