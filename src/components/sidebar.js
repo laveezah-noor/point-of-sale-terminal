@@ -1,5 +1,6 @@
 import React from 'react'
 import '../index.css';
+import routes from '../routes';
 
 const components = [
     {
@@ -136,9 +137,9 @@ export default function Sidebar({children}) {
             class="flex flex-col justify-between flex-1 mt-6 ">
                 <ul class="space-y-2">
                     
-                    {components.map((item) => {
+                    {routes.map((item) => {
                     return <li>
-                    <a href={item.link}
+                    <a href={item.path}
                         class="flex items-center p-1 text-base font-normal text-gray-900 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
                         {item.icon}
                         <span class="flex-1 ml-3 whitespace-nowrap">{item.title}</span>

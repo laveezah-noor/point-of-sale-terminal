@@ -3,12 +3,9 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import DashboardPage from './routes/dashboard-page';
-import InventoryPage from './routes/inventory-page';
-import NewEntryPage from './routes/newEntry-page';
-import ErrorPage from './routes/error-page';
 import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
+<<<<<<< HEAD
 import {ReportPage} from './routes/report-page';
 import { ProductsPage } from './routes/products-page';
 import  {newProductPage}  from './routes/newProduct-page';
@@ -51,6 +48,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>
   },
 ]);
+=======
+import routes from './routes'
+
+const router = createBrowserRouter(routes);
+>>>>>>> master
 
 function App() {
   return (
