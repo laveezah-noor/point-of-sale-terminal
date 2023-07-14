@@ -6,6 +6,7 @@ import { ProductsPage } from './routes/products-page';
 import  {newProductPage}  from './routes/newProduct-page';
 import { OrderPage } from './routes/order-page';
 import { ReportPage } from './routes/report-page';
+import  BalanceSheet  from './routes/balanceSheet-page';
 
 const routes = [
     {
@@ -130,6 +131,11 @@ const routes = [
       {
         path: "/newOrder",
         element: <OrderPage/>,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: "/balanceSheet",
+        element: <BalanceSheet/>,
         errorElement: <ErrorPage/>
       },
 ]

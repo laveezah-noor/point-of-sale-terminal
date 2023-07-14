@@ -39,15 +39,15 @@ export function newProductPage () {
             <div class="flex">
                 <div class="w-3/4">
                     <p class="text-xl font-semibold">Product Name*</p>
-                    <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
+                    <input onChange={ProductName} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
                         type="text" placeholder="Search product name"/>
                 </div>
                 <div>
                     <p class="w-1/4 text-xl font-semibold">SKU</p>
-                    <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
+                    <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
                         type="text" placeholder="Search product name"/>
                     <span class="flex items-center mt-5">
-                        <input type="checkbox" class="w-5 h-5 mr-2 outline outline-1 outline-gray-400"/>
+                        <input onChange={} type="checkbox" class="w-5 h-5 mr-2 outline outline-1 outline-gray-400"/>
                         Auto-generate SKU
                     </span>
                 </div>
@@ -123,12 +123,12 @@ export function newProductPage () {
                 <div class="flex">
                     <div class="w-3/4">
                         <p class="text-xl font-semibold">Weight</p>
-                        <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
+                        <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
                             type="text" placeholder="e.g 10"/>
                     </div>
                     <div>
                         <p class="w-1/4 text-xl font-semibold">Tags</p>
-                        <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
+                        <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl mt-5 w-96"
                             type="text" placeholder="e.g 10"/>
                     </div>
                 </div>
@@ -137,15 +137,15 @@ export function newProductPage () {
             <div class="mt-8">
                 <p class="text-2xl font-semibold">Consider how stock for this product is tracked:</p>
                 <span class="flex items-center space-x-4 mt-4">
-                    <input type="checkbox" class="w-5 h-5 outline outline-1 outline-gray-400"/>
+                    <input onChange={} type="checkbox" class="w-5 h-5 outline outline-1 outline-gray-400"/>
                     <p class="text-xl">Manage stock levels</p>
                 </span>
                 <span class="flex items-center space-x-4 mt-4">
-                    <input type="checkbox" class="w-5 h-5 outline outline-1 outline-gray-400"/>
+                    <input onChange={} type="checkbox" class="w-5 h-5 outline outline-1 outline-gray-400"/>
                     <p class="text-xl">Sellable</p>
                 </span>
                 <span class="flex items-center space-x-4 mt-4">
-                    <input type="checkbox" class="w-5 h-5 outline outline-1 outline-gray-400"/>
+                    <input onChange={} type="checkbox" class="w-5 h-5 outline outline-1 outline-gray-400"/>
                     <p class="text-xl">Batch racked</p>
                 </span>
             </div>
@@ -158,7 +158,7 @@ export function newProductPage () {
             <div class="mt-5">
                 <p class="font-semibold">Initial Stock*</p>
                 <div class="flex items-center mt-5">
-                    <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
+                    <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
                         placeholder="Enter initial stock"/>
                 </div>
             </div>
@@ -178,7 +178,7 @@ export function newProductPage () {
             <div class="mt-5">
                 <p class="font-semibold">Initial Cost</p>
                 <div class="flex items-center mt-5">
-                    <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
+                    <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
                         placeholder="Enter initial stock"/>
                 </div>
                 <p class="mt-3 text-gray-400">Initial cost is required if initial stock is a greater than zero</p>
@@ -187,7 +187,7 @@ export function newProductPage () {
             <div class="mt-8">
                 <p class="font-semibold">Buy Price</p>
                 <div class="flex items-center mt-5">
-                    <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
+                    <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
                         placeholder="Enter initial stock"/>
                 </div>
             </div>
@@ -195,7 +195,7 @@ export function newProductPage () {
             <div class="mt-5">
                 <p class="font-semibold">Wholesale Price</p>
                 <div class="flex items-center mt-5">
-                    <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
+                    <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
                         placeholder="Enter initial stock"/>
                 </div>
             </div>
@@ -203,7 +203,7 @@ export function newProductPage () {
             <div class="mt-5">
                 <p class="font-semibold">Retail Price</p>
                 <div class="flex items-center mt-5">
-                    <input class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
+                    <input onChange={} class="h-12 outline outline-1 outline-gray-400 text-lg pl-2.5 rounded-xl w-11/12" type="text"
                         placeholder="Enter initial stock"/>
                 </div>
             </div>
@@ -213,7 +213,7 @@ export function newProductPage () {
                 <p class="mt-3 text-gray-400">A single variants will be created equally unless you enable the multiple
                     variant options.</p>
                 <div class="mt-5 p-3 rounded-xl border border-gray-400 flex items-center space-x-4">
-                    <input type="checkbox" class="w-5 h-5 ml-3 outline outline-1 outline-gray-400"/>
+                    <input onChange={} type="checkbox" class="w-5 h-5 ml-3 outline outline-1 outline-gray-400"/>
                     <p class="">This product has multiple variants</p>
                 </div>
             </div>
@@ -223,7 +223,7 @@ export function newProductPage () {
                 <p class="mt-3 text-gray-400">A single variants will be created equally unless you enable the multiple
                     variant options.</p>
                 <div class="mt-5 p-3 rounded-xl border border-gray-400 flex items-center space-x-4">
-                    <input type="checkbox" class="w-5 h-5 ml-3 outline outline-1 outline-gray-400"/>
+                    <input onChange={} type="checkbox" class="w-5 h-5 ml-3 outline outline-1 outline-gray-400"/>
                     <p class="">This product has multiple variants</p>
                 </div>
             </div>
