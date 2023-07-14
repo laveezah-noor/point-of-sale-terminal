@@ -35,6 +35,21 @@ app.get('/',(req,res)=>{
   res.send("Hello")
 })
 
+app.get('/getAccounts',(req,res)=>{
+  const SELECT_ALL_TASKS = `
+  SELECT id,account_name FROM ACCOUNTS WHERE id != 0;
+  `;
+  connection.query(SELECT_ALL_TASKS, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+      res.send(result)
+    }
+  });
+})
+
+
 app.get('/home',(req,res)=>{
   const SELECT_ALL_TASKS = `
   SELECT COUNT(*) AS Students FROM STUDENT;
