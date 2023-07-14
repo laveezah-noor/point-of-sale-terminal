@@ -149,7 +149,7 @@ export default function Sidebar({children}) {
                 </ul>
             </div>
         </aside>
-        <main className='ml-64 w-5/6'>{children}</main>
+        <main className='ml-[16.666667%] w-5/6'>{children}</main>
     </div>
   )
 }
