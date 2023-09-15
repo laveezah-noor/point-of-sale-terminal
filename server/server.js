@@ -35,6 +35,66 @@ app.get('/',(req,res)=>{
   res.send("Hello")
 })
 
+app.get('/getEntries',(req,res)=>{
+  const SELECT_ALL_TASKS = `  
+SELECT t.transaction_date AS Date, t.description AS DescriptionOrAccountTitle, 
+null as AmountDebit, null AS AmountCredit, t.id AS Reference, null AS IsLine
+FROM transactions t
+LEFT JOIN ledger_entries e ON e.transaction_id = t.id
+LEFT JOIN accounts a ON a.id = e.account_id
+UNION
+SELECT null AS Date, (CASE WHEN e.entry_type = 'D' THEN
+a.account_name ELSE CONCAT('-  ', a.account_name) END) AS DescriptionOrAccountTitle,
+(CASE WHEN e.entry_type = 'D' THEN e.amount ELSE null END) AS AmountDebit,
+(CASE WHEN e.entry_type = 'C' THEN e.amount ELSE null END) AS AmountDebit,
+t.id AS Reference, (CASE WHEN e.entry_type = 'D' THEN 1 ELSE 2 END) AS IsLine
+FROM transactions t
+LEFT JOIN ledger_entries e ON e.transaction_id = t.id
+LEFT JOIN accounts a ON a.id = e.account_id
+ORDER BY Reference, IsLine;
+  `;
+  connection.query(SELECT_ALL_TASKS, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+      res.send(result)
+    }
+  });
+})
+
+app.get('/getInventory',(req,res)=>{
+  const SELECT_ALL_TASKS = `
+  select t.transaction_date as Date,d.description, 
+(CASE WHEN l.entry_type = 'D' THEN l.amount ELSE null END) AS AmountDebit,
+(CASE WHEN l.entry_type = 'C' THEN l.amount ELSE null END) AS AmountCredit,
+SUM(CASE WHEN l.entry_type='D' THEN l.amount ELSE -l.amount END) OVER (ORDER BY t.transaction_date) AS Balance
+ from documents d
+LEFT JOIN transactions t ON d.id=t.document_id
+left join ledger_entries l on t.id=l.transaction_id
+left join accounts a on l.account_id=a.id
+where a.account_name="Inventory"
+ORDER BY t.transaction_date DESC;`;
+//   `
+//   SELECT SQL_NO_CACHE e.account_id, a.account_name,
+// SUM(CASE WHEN e.entry_type='D' THEN e.amount ELSE -e.amount END) AS Balance
+// FROM transactions t
+// LEFT JOIN ledger_entries e ON e.transaction_id = t.id
+// LEFT JOIN accounts a ON a.id = e.account_id 
+// WHERE a.account_name = "Inventory"
+// GROUP BY e.account_id
+// ORDER BY CAST(e.account_id AS CHAR);
+//   `
+  connection.query(SELECT_ALL_TASKS, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+      res.send(result)
+    }
+  });
+})
+
 app.get('/getAccounts',(req,res)=>{
   const SELECT_ALL_TASKS = `
   SELECT id,account_name FROM ACCOUNTS WHERE id != 0;
@@ -48,6 +108,94 @@ app.get('/getAccounts',(req,res)=>{
     }
   });
 })
+
+app.get('/getTrialBalance',(req,res)=>{
+  connection.query(GET_TRIAL_BALANCE, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+      res.send(result)
+    }
+  });
+})
+
+app.get('/getBalanceSheet',(req,res)=>{
+    
+  const GET_BALANCE_SHEET = `
+  SELECT 
+  DISTINCT(a.official_code) as name 
+  FROM accounts a
+  JOIN
+        ledger_entries le ON a.id = le.account_id
+    JOIN
+        transactions t ON le.transaction_id = t.id
+    JOIN
+        balance_and_income_lines b ON a.balance_and_income_line_id = b.id
+    GROUP BY
+        a.id;
+  SELECT
+        a.account_name as account_name,
+        a.official_code as account_type,
+        SUM(CASE WHEN le.entry_type = 'D' THEN le.amount ELSE 0 END) AS debit_balance,
+        SUM(CASE WHEN le.entry_type = 'C' THEN le.amount ELSE 0 END) AS credit_balance
+    FROM
+        accounts a
+    JOIN
+        ledger_entries le ON a.id = le.account_id
+    JOIN
+        transactions t ON le.transaction_id = t.id
+    JOIN
+        balance_and_income_lines b ON a.balance_and_income_line_id = b.id
+    GROUP BY
+        a.id;`
+    
+    connection.query(GET_BALANCE_SHEET, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result)
+      }
+    });
+})
+
+app.post('/newEntry', (req, res) => {
+  const entry = req.body.entry;
+  console.log(entry);
+  const document = Math.floor(Math.random() * 10);
+  const ledger = Math.floor(Math.random() * 10);
+  const transaction = Math.floor(Math.random() * 10);
+  // const Password = req.body.Password;
+  // SELECT newEntry(1000101, '2002-01-13', "", "Equipment bought", 0, now(), "user",1000101, 2500102, '122', 'D', 20000);
+  const SELECT_ALL_TASKS = `
+  
+  SELECT newEntry(${document}, '${entry.date}', "", "${entry.description}", 0, now(), "user", ${transaction}, ${ledger}, '${entry.account}', '${entry.type}', ${entry.amount});
+`;
+console.log(SELECT_ALL_TASKS);
+// // CALL Login('${UserName}','${Password}',@Result, @ID, @Role);
+// // SELECT @Result;
+// // SELECT @ID;
+// // SELECT @Role;
+  connection.query(SELECT_ALL_TASKS, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // let msg = result[1][0]['@Result']
+      // let userID = result[2][0]['@ID']
+      // let roleID = result[3][0]['@Role']
+      // console.log(result)
+      // console.log(msg,userID,roleID)
+      // let data = {
+      //   msg: msg,
+      //   userID: userID,
+      //   roleID: roleID
+      // }
+      console.log(result)
+      res.send(result);
+    }
+  });
+});
 
 
 app.get('/home',(req,res)=>{

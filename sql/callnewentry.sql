@@ -16,6 +16,4 @@ VALUES
 (2500100, 1000100, '0', 'D', '3514400.00', NULL, NULL);
 
 
-SELECT newEntry(1000101, '2002-01-13', "", 
-"Equipment bought", 0, now(), "user",
-1000101, 2500102, '122', 'D', 20000);
+SELECT newEntry(1000101, '2002-01-13', "", "Equipment bought", 0, now(), "user",1000101, 2500102, '122', 'D', 20000);

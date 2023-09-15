@@ -42,21 +42,42 @@ export default function NewEntryPage() {
     console.log(amount);
   }
   const onCreate = ()=>{
-    if (account != ''  && description != "" && date != "" && account != "" && entryType != "" && amount != "")
-    setEntry({
-      date: date,
-      account: account,
-      description: description,
-      type: entryType,
-      amount: parseFloat(amount),
-      
+    if (account != ''  && description != "" && date != "" && account != "" && entryType != "" && amount != ""){
+      setEntry({
+        date: date,
+        account: account,
+        description: description,
+        type: entryType,
+        amount: parseFloat(amount),
+        
+      })
+      axios.post(`http://localhost:4000/newEntry`, {
+        entry
+      })
+      .then((result) => {
+        console.log(result);
+        alert('Entry Successful');
+    } // fetching the updated list
+        ,(error)=>{
+        alert('Failed');
+        // $('#exampleModal .btn-close').click()
     })
+    }
+    else{
+      alert("Enter all the fields")
+    }
     console.log(entry);
   }
-
-  useEffect(() => {
+  const reload = () =>{
     const now = new Date();
     setDate(now.getDate());
+    setAccount("")
+    setAmount('')
+    setDescription("")
+    setEntryType('')
+  }
+  useEffect(() => {
+    reload();
     axios
     .get(`http://localhost:4000/getAccounts`)
       .then((response) => {
@@ -78,7 +99,9 @@ export default function NewEntryPage() {
                 </div>
             <div class="px-16 block ">
                 <div class="ml-4 bg-white rounded-lg px-5 py-1 border-2 border-gray-300">
-                    <button>Clear</button>
+                    <button
+                    onClick={()=>reload()}
+                    >Clear</button>
                 </div>
             </div>
             </div>

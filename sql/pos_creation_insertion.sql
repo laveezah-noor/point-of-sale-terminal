@@ -36,9 +36,9 @@ CREATE TABLE `accounts` (
 
 INSERT INTO `accounts` (
 `id`, `balance_and_income_line_id`, `equity_column_id`, `account_name`, 
-`account_type`, `official_code`, `is_archived`, `inserted_at`, `inserted_by`, `updated_at`, `updated_by`) 
+`account_type`, `official_code`, `is_archived`, `inserted_at`, `inserted_by`, `updated_at`, `updated_by`)
 VALUES 
--- ('0', 39, 1, '18367', 8, 'zxjp', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
+('202', 39, null, 'Inventory', 2, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
 ('1', 39, null, 'Fixed Assets', 1, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
 ('122', 39, null, 'Equipment', 1, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
 ('2', 39, null, 'Current Assets', 2, 'assets', 1, '1989-04-29 18:04:34', '', '1983-02-17 09:48:32', ''),
